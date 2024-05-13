@@ -1,0 +1,30 @@
+:root {
+  --headers: #1a5276;
+  --links: #556b2f;
+  --buttons: #555555;
+}
+
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
+html, body {
+  background-color: #f0f8ff;
+}
+
+button {
+  background-color: var(--buttons);
+  padding: 10px 5px;
+  border: none;
+  color: white;
+}
+
+h1 {
+  color: var(--headers);
+  font-family: 'Montserrat', sans-serif;
+}
+
+a {
+  color: var(--links);
+  text-decoration: none;
+}

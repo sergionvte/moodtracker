@@ -1,0 +1,34 @@
+# Entornos virtuales
+venv/
+
+# Archivos de registro y caché
+logs/
+*.log
+__pycache__/
+instance/
+.webassets-cache
+
+# Archivos de configuración locales
+.env
+.env.*
+
+# Archivos de caché y sesiones
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de compilación
+*.db
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de IDE
+.idea/
+.vscode/
+
+# Otros archivos y directorios
+*.sqlite
+*.pyc
+*.pyo
+*.pyd
