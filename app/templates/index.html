@@ -3,9 +3,9 @@
 {% block title %}Index{% endblock title %}
 
 {% block content %}
-<div>
+<div class="welcome">
   <h1>MoodTracker</h1>
-  <p>Bienvenido a MoodTracker, <a href="#">este es un enlace de ejemplo</a>, y aqui termina mi texto.</p>
-  <button>Hola!</button>
+  <p>Welcome to MoodTracker! If you want to start, <a href="{{ url_for('auth.register') }}">click here</a> and create and account. Or if you have an account, click in the button below to login.</p>
+  <button>Start now!</button>
 </div>
 {% endblock content %}
