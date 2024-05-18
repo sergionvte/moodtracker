@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_file
 import os
 
 
@@ -16,6 +16,18 @@ def create_app():
     from . import db
 
     db.init_app(app)
+
+    @app.route('/manifest.json')
+    def serve_manifest():
+        return send_file(
+            'manifest.json',
+            mimetype='application/manifest+json'
+        )
+
+
+    @app.route('/sw.js')
+    def serve_sw():
+        return send_file('sw.js', 'application/javascript')
 
     from . import auth
     from . import entry
