@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Create{% endblock %}
+
+{% block content %}
+
+<form method="post">
+  <input type="text" name="emotion" id="emotion" required>
+  <input type="text" name="description" id="description" required>
+  <button type="submit">Create</button>
+</form>
+
+{% endblock %}

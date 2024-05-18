@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}Index{% endblock title %}
+{% block title %}Index{% endblock %}
 
 {% block content %}
 <div class="welcome">
+  <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="logo">
   <h1>MoodTracker</h1>
-  <p>Welcome to MoodTracker! If you want to start, <a href="{{ url_for('auth.register') }}">click here</a> and create and account. Or if you have an account, click in the button below to login.</p>
-  <button>Start now!</button>
+  <p>Welcome to MoodTracker! If you want to start, <a href="{{ url_for('auth.register') }}">click here</a> and create and account. Or if you have an account, click in the button below to log in.</p>
+  <form method="post">
+    <button type="submit">Start now!</button>
+  </form>
 </div>
-{% endblock content %}
+{% endblock %}

@@ -7,6 +7,7 @@ from .db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -25,15 +26,19 @@ def register():
 
         if not name:
             error = 'Name is required'
+            flash(error)
 
         if not email:
             error = 'Email is required'
+            flash(error)
 
         if not password:
             error = 'Password is required'
+            flash(error)
 
         if not age:
             error = 'Age is required'
+            flash(error)
 
         if c.fetchone() is not None: # podria ser elif
             error = 'User with email {} is already registered'.format(email)
@@ -47,6 +52,63 @@ def register():
 
             return redirect(url_for('auth.login'))
 
+    return render_template('auth/register.html')
+
+
+@bp.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        db, c = get_db()
+        error = None
+
+        c.execute (
+            'SELECT * FROM users WHERE email = %s', (email,)
+        )
+
+        user = c.fetchone()
+
+        if user is None:
+            error = 'User or password wrong'
+        elif not check_password_hash(user['password'], password):
+            error = 'User or password wrong'
+
+        if error is None:
+            session.clear()
+            session['user_id'] = user['id']
+            return redirect(url_for('entry.dashboard'))
+
         flash(error)
 
-    return render_template('auth/register.html')
+    return render_template('auth/login.html')
+
+
+@bp.before_app_request
+def load_logged_in_user():
+    user_id = session.get('user_id')
+
+    if user_id is None:
+        g.user = None
+    else:
+        db, c = get_db()
+        c.execute(
+            'SELECT * FROM users WHERE id = %s', (user_id,)
+        )
+        g.user = c.fetchone()
+
+
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.user is None:
+            return redirect(url_for('auth.login'))
+        return view(**kwargs)
+    return wrapped_view
+
+
+@bp.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('auth.login'))
