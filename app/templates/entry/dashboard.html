@@ -2,12 +2,15 @@
 
 {% block title %}Dashboard{% endblock %}
 
+{% block action %}
+<a class="button" href="{{ url_for('auth.logout') }}">Log out</a>
+{% endblock %}
+
 {% block content %}
-
-<a href="{{ url_for('auth.logout') }}">Log out</a>
-
+<div class="dashboard">
 <h1>Dashboard</h1>
 {% for entry in entries %}
   <div>{{ entry }}</div>
 {% endfor %}
+</div>
 {% endblock %}

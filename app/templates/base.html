@@ -25,6 +25,11 @@
   <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
+  {% if g.user %}
+    <nav>Hola!</nav>
+    {% block action %}{% endblock %}
+  {% endif %}
+
   <div class="content">
     {% block content %}{% endblock content %}
   </div>
