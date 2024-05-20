@@ -85,6 +85,10 @@ def login():
     return render_template('auth/login.html')
 
 
+@bp.route('/recovery', methods=['GET', 'POST'])
+def recover_password():
+    return render_template('auth/recover.html')
+
 @bp.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')

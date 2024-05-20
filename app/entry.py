@@ -59,3 +59,8 @@ def create():
             return redirect(url_for('entry.dashboard'))
     
     return render_template('entry/create.html')
+
+
+@bp.route('/update', methods=['GET', 'POST'])
+def update():
+    return render_template('entry/update.html')

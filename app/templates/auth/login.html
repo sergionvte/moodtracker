@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title%}Login{% endblock %}</h1>
-{% endblock %}
+{% block title %}Login to your MoodTracker account{% endblock title %}
 
-{% block content%}
+{% block content %}
 <div class="auth-content">
   <form method="post" class="auth-form login-form">
     <div class="auth-form-content">
@@ -19,14 +17,16 @@
           </ul>
         {% endif %}
       {% endwith %}
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <input type="password" id="password" name="password" placeholder="Password" required>
+      <div class="remember">
+        <input type="checkbox" name="remember" id="remember">
+        <label for="remember">Remember me</label>
+      </div>
       <button type="submit" class="submit">Log in</button>
+      <a href="{{ url_for('auth.recover_password') }}">Forgot password?</a>
       <p>Don't have an account yet? Create your account <a href="{{ url_for('auth.register') }}">here!</a></p>
-      <a href="#">Did you forget your password?</a>
     </div>
   </form>
 </div>
-{% endblock %}
+{% endblock content %}

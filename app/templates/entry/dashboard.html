@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Dashboard{% endblock title %}
 
 {% block action %}
 <a class="button" href="{{ url_for('auth.logout') }}">Log out</a>
-{% endblock %}
+{% endblock action %}
 
 {% block content %}
 <div class="dashboard">
-<h1>Dashboard</h1>
-{% for entry in entries %}
-  <div>{{ entry }}</div>
-{% endfor %}
+  <div class="left">
+    <h1>Dashboard</h1>
+    {% for entry in entries %}
+      <div>{{ entry }}</div>
+    {% endfor %}
+  </div>
+  <div class="left">
+    <a href="{{ url_for('entry.create') }}">Crear</a>
+  </div>
 </div>
-{% endblock %}
+{% endblock content %}

@@ -13,7 +13,6 @@
   --blue: #90CCE0;
   --green: #96E09B;
   --brown: #E0B58A;
-
 }
 
 * {
@@ -34,6 +33,7 @@ body {
 
 nav {
   background-color: var(--dark);
+  height: 30px;
   padding: 5px 10px;
   color: var(--text-light);
 }
@@ -41,6 +41,7 @@ nav {
 button,
 .button {
   text-decoration: none;
+  font-size: medium;
   background-color: var(--light);
   height: 41.5px;
   color: var(--text-light);
@@ -148,7 +149,7 @@ ul {
 
 .dashboard {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 @media(max-width: 600px) {
@@ -160,5 +161,4 @@ ul {
     background-color: var(--background);
     box-shadow: none;
   }
-  
 }
