@@ -4,11 +4,36 @@
 
 {% block content %}
 <div class="welcome">
-  <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="logo">
-  <h1>MoodTracker</h1>
-  <p>Welcome to MoodTracker! If you want to start, <a href="{{ url_for('auth.register') }}">click here</a> and create and account. Or if you have an account, click in the button below to log in.</p>
-  <form method="post">
-    <button type="submit">Start now!</button>
-  </form>
+  <div class="welcome-content">
+    <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="logo">
+    <h1>Welcome to MoodTracker</h1>
+      <p>Track your emotions, activities, and discover what influences your mood.</p>
+
+      <h2>What is MoodTracker?</h2>
+      <p>MoodTracker is an application designed to record and analyze your emotional state at different times of the day. Our platform allows you to:</p>
+      <ul>
+          <li><strong>Track your mood:</strong> Record how you feel at any time of the day.</li>
+          <li><strong>Log activities:</strong> Keep track of the activities you perform and how they affect your mood.</li>
+          <li><strong>Detailed descriptions:</strong> Add a brief description to explain what factors or events influenced your emotions.</li>
+      </ul>
+
+      <h2>How it works</h2>
+      <ul>
+          <li><strong>Track your mood:</strong> Select from a variety of emotions to describe how you feel.</li>
+          <li><strong>Add activities:</strong> Choose from a list of activities or add your own to log what you've been doing.</li>
+          <li><strong>Describe your emotions:</strong> Write a brief description of what caused your mood, whether it's a specific event, interaction, or any other factor.</li>
+      </ul>
+
+      <h2>Benefits of using MoodTracker</h2>
+      <ul>
+          <li><strong>Self-awareness:</strong> Discover patterns in your mood and better understand your emotions.</li>
+          <li><strong>Well-being:</strong> Identify activities and situations that improve or negatively affect your well-being.</li>
+          <li><strong>Tracking:</strong> Keep a detailed record of your emotions over time to see your emotional progress.</li>
+      </ul>
+    <p>Welcome to MoodTracker! If you want to start, <a href="{{ url_for('auth.register') }}">click here</a> and create and account. Or if you have an account, click in the button below to log in.</p>
+    <form method="post">
+      <button type="submit">Start now!</button>
+    </form>
+  </div>
 </div>
 {% endblock content %}

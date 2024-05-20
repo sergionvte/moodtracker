@@ -6,7 +6,9 @@
 <div class="auth-content">
   <form method="post" class="auth-form register-form">
     <div class="auth-form-content">
-      <a href="{{ url_for('entry.index') }}">Home</a>
+      <div>
+        <a href="{{ url_for('entry.index') }}">Home</a>
+      </div>
       <h1>Recover your password</h1>
       {% with messages = get_flashed_messages() %}
         {% if messages %}

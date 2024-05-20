@@ -4,24 +4,7 @@
   <meta charset="UTF-8">
   <meta name="theme-color" content="#33678a">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <link rel="icon" href="{{url_for('static', filename='icons/icon32.png')}}" type="image/png">
-  <link rel="icon" href="{{url_for('static', filename='icons/icon64.png')}}" type="image/png">
-  <link rel="icon" href="{{url_for('static', filename='icons/icon128.png')}}" type="image/png">
-  <link rel="icon" href="{{url_for('static', filename='icons/icon256.png')}}" type="image/png">
-  <link rel="icon" href="{{url_for('static', filename='icons/icon512.png')}}" type="image/png">
-  <link rel="icon" href="{{url_for('static', filename='icons/icon1028.png')}}" type="image/png">
-  <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon32.png')}}" type="image/png">
-  <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon64.png')}}" type="image/png">
-  <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon128.png')}}" type="image/png">
-  <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon256.png')}}" type="image/png">
-  <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon512.png')}}" type="image/png">
-  <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon1024.png')}}" type="image/png">
-  <link rel="icon" href="{{ url_for('static', filename='img/webicon.svg') }}">
-  <script src="{{ url_for('static', filename='js/pwa.js') }}"></script>
+  {% include 'links.html' %}
   <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
@@ -30,11 +13,9 @@
     {% block action %}{% endblock action %}
   {% endif %}
 
-  <div class="content">
-    {% block content %}{% endblock content %}
-  </div>
+  {% block content %}{% endblock content %}
   <footer>
-    <p>This is a footer :)</p>
+    <p>MoodTracker</p>
   </footer>
 </body>
 </html>

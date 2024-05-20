@@ -42,11 +42,9 @@ def create():
 
         if not emotion:
             error = 'Emotion is required'
-            flash(error)
 
         if not description:
             error = 'Description is required'
-            flash(error)
 
         if error is None:
             db, c = get_db()
@@ -57,6 +55,8 @@ def create():
             )
             db.commit()
             return redirect(url_for('entry.dashboard'))
+
+        flash(error)
     
     return render_template('entry/create.html')
 

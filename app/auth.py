@@ -26,19 +26,15 @@ def register():
 
         if not name:
             error = 'Name is required'
-            flash(error)
 
         if not email:
             error = 'Email is required'
-            flash(error)
 
         if not password:
             error = 'Password is required'
-            flash(error)
 
         if not age:
             error = 'Age is required'
-            flash(error)
 
         if c.fetchone() is not None: # podria ser elif
             error = 'User with email {} is already registered'.format(email)
@@ -51,6 +47,8 @@ def register():
             db.commit()
 
             return redirect(url_for('auth.login'))
+
+        flash(error)
 
     return render_template('auth/register.html')
 
