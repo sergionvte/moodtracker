@@ -3,7 +3,7 @@
 {% block title %}MoodTracker{% endblock title %}
 
 {% block content %}
-<div class="welcome">
+<section class="welcome">
   <div class="welcome-content">
     <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="logo">
     <h1>Welcome to MoodTracker</h1>
@@ -30,10 +30,10 @@
           <li><strong>Well-being:</strong> Identify activities and situations that improve or negatively affect your well-being.</li>
           <li><strong>Tracking:</strong> Keep a detailed record of your emotions over time to see your emotional progress.</li>
       </ul>
-    <p>Welcome to MoodTracker! If you want to start, <a href="{{ url_for('auth.register') }}">click here</a> and create and account. Or if you have an account, click in the button below to log in.</p>
+    <p>If you want to start, <a href="{{ url_for('auth.register') }}">click here</a> and create and account. Or if you have an account, click in the button below to log in.</p>
     <form method="post">
       <button type="submit">Start now!</button>
     </form>
   </div>
-</div>
+</section>
 {% endblock content %}

@@ -3,7 +3,7 @@
 {% block title %}Create a new MoodTracker account{% endblock title %}
 
 {% block content %}
-<div class="auth-content">
+<section class="auth-content">
   <form method="post" class="auth-form register-form">
     <div class="auth-form-content">
       <div>
@@ -25,8 +25,8 @@
       <input type="password" id="password" name="password" placeholder="Password" required>
       <input type="number" id="age" name="age" placeholder="Age" required>
       <button type="submit" class="submit">Register</button>
-      <p>Do you already have an account? Log in <a href="{{ url_for('auth.login') }}">here!</a></p>
+      <p>Do you have an account? Log in <a href="{{ url_for('auth.login') }}">here!</a></p>
     </div>
   </form>
-</div>
+</section>
 {% endblock content %}

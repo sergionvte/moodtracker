@@ -9,8 +9,10 @@
 </head>
 <body>
   {% if g.user %}
-    <nav>Hola!</nav>
-    {% block action %}{% endblock action %}
+    <nav>
+      MoodTracker
+      {% block action %}{% endblock action %}
+    </nav>
   {% endif %}
 
   {% block content %}{% endblock content %}

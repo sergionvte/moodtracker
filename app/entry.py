@@ -11,6 +11,8 @@ bp = Blueprint('entry', __name__)
 
 @bp.route('/', methods=['GET', 'POST'])
 def index():
+    if g.user is not None:
+        return redirect(url_for('entry.dashboard'))
     if request.method == 'POST':
         return redirect(url_for('auth.login'))
 
@@ -57,7 +59,7 @@ def create():
             return redirect(url_for('entry.dashboard'))
 
         flash(error)
-    
+
     return render_template('entry/create.html')
 
 

@@ -1,8 +1,9 @@
 import functools
 from flask import (
-    Blueprint, flash, g, render_template, request, url_for, session, redirect
+    Blueprint, flash, g, render_template, request, url_for, session, redirect, current_app
 )
 from werkzeug.security import check_password_hash, generate_password_hash
+from datetime import timedelta
 from .db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
@@ -58,6 +59,7 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
+        remember = request.form.get('remember')
 
         db, c = get_db()
         error = None
@@ -76,6 +78,13 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
+
+            if remember:
+                session.permanent = True
+                current_app.permanent_session_lifetime = timedelta(days=30)
+            else:
+                session.permanent = False
+
             return redirect(url_for('entry.dashboard'))
 
         flash(error)
@@ -99,6 +108,7 @@ def load_logged_in_user():
             'SELECT * FROM users WHERE id = %s', (user_id,)
         )
         g.user = c.fetchone()
+        session.modified = True
 
 
 def login_required(view):

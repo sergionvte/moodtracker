@@ -3,19 +3,24 @@
 {% block title %}Dashboard{% endblock title %}
 
 {% block action %}
-<a class="button" href="{{ url_for('auth.logout') }}">Log out</a>
+<a href="{{ url_for('auth.logout') }}">Log out</a>
 {% endblock action %}
 
 {% block content %}
-<div class="dashboard">
+<section class="dashboard">
   <div class="left">
+    Aqui va un panel lateral :)
+  </div>
+  <div class="right">
     <h1>Dashboard</h1>
     {% for entry in entries %}
-      <div>{{ entry }}</div>
+      <div>
+        <h2>{{ entry['emotion'] }}</h2>
+        <p>{{ entry['description'] }}</p>
+        <p>{{ entry['modified_at'] }}</p>
+      </div>
     {% endfor %}
+    <a class="button" href="{{ url_for('entry.create') }}">Crear</a>
   </div>
-  <div class="left">
-    <a href="{{ url_for('entry.create') }}">Crear</a>
-  </div>
-</div>
+</section>
 {% endblock content %}

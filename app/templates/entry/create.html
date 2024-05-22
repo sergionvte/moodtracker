@@ -3,11 +3,19 @@
 {% block title %}Create{% endblock title %}
 
 {% block content %}
-
-<form method="post">
-  <input type="text" name="emotion" id="emotion" required>
-  <input type="text" name="description" id="description" required>
-  <button type="submit">Create</button>
-</form>
+<section class="create">
+  <a href="{{ url_for('entry.dashboard') }}">Back</a>
+  <form method="post">
+    <select type="text" name="emotion" id="emotion" placeholder="Emotion" required>
+      <option>Anger</option>
+      <option>Disgust</option>
+      <option>Joy</option>
+      <option>Sadness</option>
+      <option>Surprice</option>
+    </select>
+    <input type="text" name="description" id="description" placeholder="Description" required>
+    <button type="submit">Create</button>
+  </form>
+</section>
 
 {% endblock content %}
