@@ -3,6 +3,7 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 from datetime import datetime
+import pytz
 from .auth import login_required
 from .db import get_db
 
@@ -37,7 +38,7 @@ def dashboard():
 @login_required
 def create():
     if request.method == 'POST':
-        emotion = request.form['emotion']
+        emotion = request.form['selected_value']
         description = request.form['description']
 
         error = None

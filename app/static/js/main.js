@@ -1,5 +1,11 @@
-setTimeout(() => {
-  const main = document.querySelector('body');
-  main.style.opacity = 1;
-  main.style.filter = 'blur(0px)';
-}, 1)
+document.addEventListener("DOMContentLoaded", function() {
+    var userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    fetch('/timezone', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ timezone: userTimezone })
+    });
+});

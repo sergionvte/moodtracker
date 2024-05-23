@@ -7,19 +7,19 @@
   --error: #e65c4f;
   --text-light: #f0f0ff;
   /*emotions-colors*/
-  --red: #E08D9D;
-  --purple: #B48BE0;
-  --yellow: #E0D78E;
-  --blue: #90CCE0;
-  --green: #96E09B;
-  --brown: #E0B58A;
+  --red: #e08d9d;
+  --purple: #b48be0;
+  --yellow: #e0d78e;
+  --blue: #90cce0;
+  --green: #96e09b;
+  --brown: #e0b58a;
 }
 
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-html{
+html {
   background-color: var(--background);
   margin: 0;
   width: 100%;
@@ -49,7 +49,7 @@ button,
   border: none;
   border-radius: 10px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-  transition: .2s;
+  transition: 0.2s;
 }
 
 button:hover,
@@ -60,12 +60,12 @@ button:hover,
 
 h1 {
   color: var(--title);
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   margin: 15px 0px;
 }
 
 h2 {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   color: var(--dark);
 }
 
@@ -84,7 +84,8 @@ footer {
   align-items: center;
 }
 
-input, select {
+input,
+select {
   border: solid 1px rgba(0, 0, 0, 0.2);
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
   padding: 10px;
@@ -127,7 +128,7 @@ ul {
 .auth-content {
   width: 100%;
   height: calc(100% - 52px);
-  background-image: url('../img/background.jpg');
+  background-image: url("../img/background.jpg");
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -159,7 +160,6 @@ ul {
 .dashboard {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .create {
@@ -177,7 +177,89 @@ ul {
   gap: 10px;
 }
 
-@media(max-width: 600px) {
+.face {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(3px 3px 3px #3a3a3a88) saturate(0);
+}
+
+.selected {
+  filter: drop-shadow(3px 3px 3px #3a3a3aaa) saturate(1);
+}
+
+.angry-face {
+  transition: background-color 0.3s ease-in-out;
+}
+
+.angry-face:hover {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.sad-face {
+  transition: background-color 0.3s ease-in-out;
+}
+
+.sad-face:hover {
+  animation: relax 0.8s ease-in-out;
+}
+
+@keyframes relax {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.happy-face {
+  transition: background-color 0.3s ease-in-out;
+}
+
+.happy-face:hover {
+  animation: rotateAnimation 0.5s ease-in-out;
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media (max-width: 600px) {
   .auth-content {
     background-image: none;
   }
@@ -187,7 +269,6 @@ ul {
     box-shadow: none;
   }
 
-  /*vista de los checkbox en iphone o movil*/
   input[type="checkbox"] {
     border: none;
     border-radius: 0;

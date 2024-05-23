@@ -6,14 +6,13 @@
 <section class="create">
   <a href="{{ url_for('entry.dashboard') }}">Back</a>
   <form method="post">
-    <select type="text" name="emotion" id="emotion" placeholder="Emotion" required>
-      <option>Anger</option>
-      <option>Disgust</option>
-      <option>Joy</option>
-      <option>Sadness</option>
-      <option>Surprice</option>
-    </select>
     <input type="text" name="description" id="description" placeholder="Description" required>
+    <div class="gallery">
+      <img src="{{ url_for('static', filename='img/happy.png') }}" alt="happy-face" data-value="happy" class="happy-face face" onclick="selectImage(this)">
+      <img src="{{ url_for('static', filename='img/angry.png') }}" alt="angry-face" data-value="angry" class="angry-face face" onclick="selectImage(this)">
+      <img src="{{ url_for('static', filename='img/sad.png') }}" alt="sad-face" data-value="sad" class="sad-face face" onclick="selectImage(this)">
+    </div>
+    <input type="hidden" name="selected_value" id="selected_value">
     <button type="submit">Create</button>
   </form>
 </section>
