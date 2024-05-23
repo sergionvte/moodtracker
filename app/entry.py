@@ -3,7 +3,6 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 from datetime import datetime
-import pytz
 from .auth import login_required
 from .db import get_db
 
