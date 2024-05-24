@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Create{% endblock title %}
+{% block title %}Update{% endblock title %}
 
 {% block content %}
 
@@ -12,6 +12,7 @@
       name="description"
       id="description"
       placeholder="Description"
+      value="{{ request.form['label'] or entry['description'] }}"
       required
     />
     <div class="gallery">

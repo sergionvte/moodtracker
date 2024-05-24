@@ -63,6 +63,48 @@ def create():
     return render_template('entry/create.html')
 
 
-@bp.route('/update', methods=['GET', 'POST'])
-def update():
-    return render_template('entry/update.html')
+def get_entry(id):
+    db, c = get_db()
+
+    c.execute(
+    'SELECT e.id, e.emotion, e.description, e.created_by, e.created_at, e.modified_at'
+    ' FROM entries e JOIN users u ON e.created_by = u.id WHERE e.id = %s',
+    (id,)
+)
+    entry = c.fetchone()
+
+    if entry is None:
+        abort(404, 'This entry {} does not exist'.format(id))
+
+    return entry
+
+
+@bp.route('/<int:id>/update', methods=['GET', 'POST'])
+@login_required
+def update(id):
+    entry = get_entry(id)
+
+    if request.method == 'POST':
+        emotion = request.form['emotion']
+        description = request.form['description']
+
+        error = None
+
+        if not emotion:
+            error = 'Emotion is required'
+
+        if not description:
+            error = 'Description is required'
+
+        if error is not None:
+            flash(error)
+        else:
+            db, c = get_db()
+            c.execute(
+                'UPDATE entries SET emotion = %s, description = %s, modified_at = %s'
+                ' WHERE id = %s AND created_by = %s',
+                (emotion, description, datetime.now(), id, g.user['id'])
+            )
+            db.commit()
+            return redirect(url_for('entry.dashboard'))
+    return render_template('entry/update.html', entry=entry)

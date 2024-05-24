@@ -14,10 +14,11 @@
   <div class="right">
     <h1>Dashboard</h1>
     {% for entry in entries %}
-      <div>
+      <div class="entry">
         <h2>{{ entry['emotion'] }}</h2>
         <p>{{ entry['description'] }}</p>
         <p>{{ entry['modified_at'] }}</p>
+        <a class="button" href="{{ url_for('entry.update', id = entry['id']) }}">Edit</a>
       </div>
     {% endfor %}
     <a class="button" href="{{ url_for('entry.create') }}">Crear</a>

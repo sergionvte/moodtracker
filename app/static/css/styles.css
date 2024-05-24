@@ -50,6 +50,7 @@ button,
   border-radius: 10px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   transition: 0.2s;
+  text-align: center;
 }
 
 button:hover,
@@ -160,6 +161,24 @@ ul {
 .dashboard {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+}
+
+.left {
+  width: 200px;
+}
+
+.right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.entry {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .create {
@@ -218,7 +237,7 @@ ul {
 }
 
 .sad-face:hover {
-  animation: relax 0.8s ease-in-out;
+  animation: relax 1s ease-in-out;
 }
 
 @keyframes relax {
@@ -233,8 +252,28 @@ ul {
   }
 }
 
-.happy-face {
+.meh-face {
   transition: background-color 0.3s ease-in-out;
+}
+
+.meh-face:hover {
+  animation: relax-s 0.8s ease-in-out;
+}
+
+@keyframes relax-s {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.happy-face {
+  transition: background-color 0.5s ease-in-out;
 }
 
 .happy-face:hover {
@@ -242,6 +281,32 @@ ul {
 }
 
 @keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.good-face {
+  transition: background-color 0.8s ease-in-out;
+}
+
+.good-face:hover {
+  animation: rotateAnimation-s 0.8s ease-in-out;
+}
+
+@keyframes rotateAnimation-s {
   0% {
     transform: rotate(0deg);
   }
@@ -272,5 +337,8 @@ ul {
   input[type="checkbox"] {
     border: none;
     border-radius: 0;
+  }
+  .dashboard {
+    flex-direction: column;
   }
 }

@@ -34,8 +34,8 @@ def create_app():
 
     app.register_blueprint(auth.bp)
     app.register_blueprint(entry.bp)
-    
+
     return app
 
 
-app = create_app() # para despliegue en pythonanywhere
+app = create_app() # para despliegue
