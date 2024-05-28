@@ -5,6 +5,8 @@
   --dark: #2d424d;
   /*text*/
   --error: #e65c4f;
+  --delete: #e65c4f;
+  --delete-h: #bb4b40;
   --text-light: #f0f0ff;
   /*emotions-colors*/
   --red: #e08d9d;
@@ -178,13 +180,32 @@ ul {
 .dashboard {
   display: flex;
   justify-content: flex-start;
-  height: calc(100% - 92px);
 }
 
 .dashboard-content {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+}
+
+.trash {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--delete);
+}
+
+.trash:hover {
+  background-color: var(--delete-h);
+}
+
+.entry > .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .left {
@@ -196,6 +217,10 @@ ul {
   justify-content: center;
   flex-direction: column;
   gap: 20px;
+}
+
+.right {
+  padding-bottom: 20px;
 }
 
 .entry {
@@ -219,6 +244,7 @@ ul {
   align-items: center;
   justify-content: center;
   gap: 15px;
+  height: calc(100% - 92px);
 }
 
 .create > form,
@@ -387,9 +413,18 @@ ul {
   .dashboard {
     flex-direction: column;
     padding: 10px 20px;
+    justify-content: center;
+  }
+
+  .dashboard-content {
+    justify-content: center;
   }
 
   .left {
     display: none;
+  }
+
+  .right {
+    padding-bottom: 10px;
   }
 }

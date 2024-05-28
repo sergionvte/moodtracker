@@ -5,7 +5,9 @@
 {% block content %}
 
 <section class="create">
-  <a href="{{ url_for('entry.dashboard') }}">Back</a>
+  <div>
+    <a href="{{ url_for('entry.dashboard') }}">Back</a>
+  </div>
   <form method="post">
     <textarea
       type="text"
