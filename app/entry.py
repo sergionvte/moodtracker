@@ -108,3 +108,15 @@ def update(id):
             db.commit()
             return redirect(url_for('entry.dashboard'))
     return render_template('entry/update.html', entry=entry)
+
+@bp.route('/<int:id>/delete', methods=['GET', 'POST'])
+@login_required
+def delete(id):
+    db, c = get_db()
+    c.execute(
+        'DELETE FROM entries'
+        ' WHERE id = %s AND created_by = %s',
+        (id, g.user['id'])
+    )
+    db.commit()
+    return redirect(url_for('entry.dashboard'))

@@ -118,6 +118,10 @@ ul {
   padding: 0;
 }
 
+hr {
+  width: 100%;
+}
+
 .error {
   margin: none;
   padding: none;
@@ -189,16 +193,26 @@ ul {
 }
 
 .trash {
-  width: auto;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: var(--delete);
 }
 
 .trash:hover {
   background-color: var(--delete-h);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.actions > .button {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .entry > .row {
