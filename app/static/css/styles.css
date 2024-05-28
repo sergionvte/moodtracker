@@ -36,6 +36,17 @@ nav {
   height: 30px;
   padding: 5px 10px;
   color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav > a {
+  color: var(--text-light);
+}
+
+section {
+  /*height: calc(100% - 92px);*/
 }
 
 button,
@@ -86,12 +97,17 @@ footer {
 }
 
 input,
-select {
+select,
+textarea {
   border: solid 1px rgba(0, 0, 0, 0.2);
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
   padding: 10px;
   border-radius: 10px;
   font-size: medium;
+}
+
+textarea {
+  resize: none;
 }
 
 ul {
@@ -109,7 +125,6 @@ ul {
 .welcome {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .welcome-content {
@@ -117,12 +132,14 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   flex-direction: column;
   text-align: justify;
   padding: 30px 30px;
 }
 
-.welcome-content > h1 {
+.welcome-content > h1,
+.welcome-content > h2 {
   text-align: center;
 }
 
@@ -160,6 +177,12 @@ ul {
 
 .dashboard {
   display: flex;
+  justify-content: flex-start;
+  height: calc(100% - 92px);
+}
+
+.dashboard-content {
+  display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
@@ -181,14 +204,25 @@ ul {
   flex-direction: column;
 }
 
-.create {
+.entry > a {
+  height: auto;
+}
+
+.right > a {
+  height: auto;
+}
+
+.create,
+.update {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 15px;
 }
 
-.create > form {
+.create > form,
+.update > form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -196,14 +230,19 @@ ul {
   gap: 10px;
 }
 
+.description {
+  width: 100%;
+  field-sizing: content; /* esto funciona unicamente en chrome */
+}
+
 .face {
   width: 50px;
   height: 50px;
-  filter: drop-shadow(3px 3px 3px #3a3a3a88) saturate(0);
+  /*filter: drop-shadow(3px 3px 3px #3a3a3a88) saturate(0);*/
 }
 
 .selected {
-  filter: drop-shadow(3px 3px 3px #3a3a3aaa) saturate(1);
+  filter: brightness(0.9) invert(.7) sepia(.5) hue-rotate(100deg) saturate(200%);
 }
 
 .angry-face {
@@ -325,6 +364,12 @@ ul {
 }
 
 @media (max-width: 600px) {
+
+  section {
+    display: flex;
+    flex-direction: column
+  }
+
   .auth-content {
     background-image: none;
   }
@@ -338,7 +383,13 @@ ul {
     border: none;
     border-radius: 0;
   }
+
   .dashboard {
     flex-direction: column;
+    padding: 10px 20px;
+  }
+
+  .left {
+    display: none;
   }
 }

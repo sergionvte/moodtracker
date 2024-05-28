@@ -8,20 +8,22 @@
 
 {% block content %}
 <section class="dashboard">
-  <div class="left">
-    Aqui va un panel lateral :)
-  </div>
-  <div class="right">
-    <h1>Dashboard</h1>
-    {% for entry in entries %}
-      <div class="entry">
-        <h2>{{ entry['emotion'] }}</h2>
-        <p>{{ entry['description'] }}</p>
-        <p>{{ entry['modified_at'] }}</p>
-        <a class="button" href="{{ url_for('entry.update', id = entry['id']) }}">Edit</a>
-      </div>
-    {% endfor %}
-    <a class="button" href="{{ url_for('entry.create') }}">Crear</a>
+  <div class="dashboard-content">
+    <div class="left">
+      Aqui va un panel lateral :)
+    </div>
+    <div class="right">
+      <h1>Dashboard</h1>
+      {% for entry in entries %}
+        <div class="entry">
+          <h2>{{ entry['emotion'].capitalize() }}</h2>
+          <p>{{ entry['description'] }}</p>
+          <p>{{ entry['modified_at'] }}</p>
+          <a class="button" href="{{ url_for('entry.update', id = entry['id']) }}">Edit entry</a>
+        </div>
+      {% endfor %}
+      <a class="button" href="{{ url_for('entry.create') }}">New entry</a>
+    </div>
   </div>
 </section>
 {% endblock content %}

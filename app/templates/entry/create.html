@@ -7,13 +7,15 @@
 <section class="create">
   <a href="{{ url_for('entry.dashboard') }}">Back</a>
   <form method="post">
-    <input
+    <textarea
       type="text"
       name="description"
+      class="description"
+      id="description"
       id="description"
       placeholder="Description"
       required
-    />
+      ></textarea>
     <div class="gallery">
       <img
         src="{{ url_for('static', filename='img/happy.png') }}"
