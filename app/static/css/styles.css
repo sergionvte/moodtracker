@@ -194,6 +194,16 @@ hr {
   justify-content: flex-start;
 }
 
+.dashboard-welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-welcome > .button {
+  height: auto;
+}
+
 .trash {
   background-color: var(--delete);
 }
