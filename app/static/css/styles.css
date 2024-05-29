@@ -442,6 +442,7 @@ hr {
     padding: 10px 20px;
     justify-content: center;
     min-height: calc(100% - 112px);
+    justify-content: flex-start;
   }
 
   .dashboard-content {
