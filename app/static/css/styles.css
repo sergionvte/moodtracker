@@ -184,11 +184,13 @@ hr {
 .dashboard {
   display: flex;
   justify-content: flex-start;
+  min-height: calc(100% - 92px);
 }
 
 .dashboard-content {
   display: flex;
   flex-direction: row;
+  gap: 30px;
   justify-content: flex-start;
 }
 
@@ -227,10 +229,13 @@ hr {
 }
 
 .left {
-  width: 200px;
+  width: 180px;
+  background-color: #C1C6C9;
+  padding: 20px 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.right {
+.panel {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -238,6 +243,10 @@ hr {
 }
 
 .right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
   padding-bottom: 20px;
 }
 
@@ -432,6 +441,7 @@ hr {
     flex-direction: column;
     padding: 10px 20px;
     justify-content: center;
+    min-height: calc(100% - 112px);
   }
 
   .dashboard-content {
