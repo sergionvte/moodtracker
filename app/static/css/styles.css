@@ -456,4 +456,8 @@ hr {
   .right {
     padding-bottom: 10px;
   }
+
+  textarea {
+    max-width: 271px;
+  }
 }
