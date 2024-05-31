@@ -185,6 +185,7 @@ hr {
   display: flex;
   justify-content: flex-start;
   min-height: calc(100% - 92px);
+  width: 100%;
 }
 
 .dashboard-content {
@@ -192,12 +193,14 @@ hr {
   flex-direction: row;
   gap: 30px;
   justify-content: flex-start;
+  width: 100%;
 }
 
 .dashboard-welcome {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%
 }
 
 .dashboard-welcome > .button {
@@ -228,7 +231,7 @@ hr {
 }
 
 .entry {
-  min-width: 350px;
+  min-width: 290px;
 }
 
 .entry > .row {
@@ -239,9 +242,9 @@ hr {
 }
 
 .left {
-  width: 180px;
-  background-color: #C1C6C9;
-  padding: 20px 10px;
+  width: auto;
+  background-color: #fefefe;
+  padding: 20px 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -249,15 +252,34 @@ hr {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.panel-elements {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
   gap: 20px;
+}
+
+.panel-elements > a {
+  text-decoration: none;
+}
+
+.element {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .right {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-self: flex-start;
   gap: 20px;
   padding-bottom: 20px;
+  padding-right: 20px;
+  width: 100%;
 }
 
 .entry {
@@ -453,10 +475,13 @@ hr {
     justify-content: center;
     min-height: calc(100% - 112px);
     justify-content: flex-start;
+    align-items: center;
+    width: auto;
   }
 
   .dashboard-content {
     justify-content: center;
+    width: 100%;
   }
 
   .left {
@@ -465,6 +490,9 @@ hr {
 
   .right {
     padding-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
   }
 
   textarea {
