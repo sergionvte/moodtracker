@@ -520,4 +520,8 @@ hr {
   textarea {
     max-width: 271px;
   }
+
+  .add-button {
+    display: none;
+  }
 }
