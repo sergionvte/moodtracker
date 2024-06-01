@@ -85,7 +85,7 @@ def login():
             else:
                 session.permanent = False
 
-            return redirect(url_for('entry.dashboard'))
+            return redirect(url_for('entry.entries'))
 
         flash(error)
 

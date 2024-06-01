@@ -8,20 +8,9 @@ from .db import get_db
 
 bp = Blueprint('entry', __name__)
 
-
-@bp.route('/', methods=['GET', 'POST'])
-def index():
-    if g.user is not None:
-        return redirect(url_for('entry.dashboard'))
-    if request.method == 'POST':
-        return redirect(url_for('auth.login'))
-
-    return render_template('index.html')
-
-
-@bp.route('/dashboard', methods=['GET', 'POST'])
+@bp.route('/entries', methods=['GET', 'POST'])
 @login_required
-def dashboard():
+def entries():
     db, c = get_db()
     c.execute(
         'SELECT e.id, e.emotion, e.description, e.created_at, e.modified_at'
@@ -31,7 +20,8 @@ def dashboard():
     )
     entries = c.fetchall()
 
-    return render_template('entry/dashboard.html', entries=entries)
+    return render_template('entry/entries.html', entries=entries)
+
 
 @bp.route('/new', methods=['GET', 'POST'])
 @login_required
@@ -56,7 +46,7 @@ def create():
                 (emotion, description, g.user['id'], datetime.now(), datetime.now())
             )
             db.commit()
-            return redirect(url_for('entry.dashboard'))
+            return redirect(url_for('entry.entries'))
 
         flash(error)
 
@@ -106,7 +96,7 @@ def update(id):
                 (emotion, description, datetime.now(), id, g.user['id'])
             )
             db.commit()
-            return redirect(url_for('entry.dashboard'))
+            return redirect(url_for('entry.entries'))
     return render_template('entry/update.html', entry=entry)
 
 @bp.route('/<int:id>/delete', methods=['GET', 'POST'])
@@ -119,4 +109,4 @@ def delete(id):
         (id, g.user['id'])
     )
     db.commit()
-    return redirect(url_for('entry.dashboard'))
+    return redirect(url_for('entry.entries'))

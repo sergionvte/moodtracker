@@ -1,4 +1,6 @@
-from flask import Flask, send_file
+from flask import (
+    Flask, send_file, g, request, redirect, render_template, url_for
+)
 import os
 
 
@@ -29,11 +31,24 @@ def create_app():
     def serve_sw():
         return send_file('sw.js', 'application/javascript')
 
+
+    @app.route('/', methods=['GET', 'POST'])
+    def index():
+        if g.user is not None:
+            return redirect(url_for('entry.entries'))
+        if request.method == 'POST':
+            return redirect(url_for('auth.login'))
+
+        return render_template('index.html')
+
+
     from . import auth
     from . import entry
+    from . import profile
 
     app.register_blueprint(auth.bp)
     app.register_blueprint(entry.bp)
+    app.register_blueprint(profile.bp)
 
     return app
 

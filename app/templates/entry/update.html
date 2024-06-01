@@ -5,10 +5,11 @@
 {% block content %}
 
 <section class="update">
-  <div>
-    <a href="{{ url_for('entry.dashboard') }}">Back</a>
-  </div>
+
   <form method="post">
+    <div>
+      <a href="{{ url_for('entry.entries') }}">Back</a>
+    </div>
     <textarea
       type="text"
       name="description"
