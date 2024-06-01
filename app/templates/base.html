@@ -10,16 +10,12 @@
 <body>
   {% if g.user %}
     <nav>
-      MoodTracker
+      <span><b>Mood</b>Tracker</span>
       {% block action %}{% endblock action %}
     </nav>
   {% endif %}
 
   {% block content %}{% endblock content %}
-  <footer>
-    <p>MoodTracker</p>
-  </footer>
   <script src="{{ url_for('static', filename=('js/selectEmotion.js')) }}"></script>
-
 </body>
 </html>

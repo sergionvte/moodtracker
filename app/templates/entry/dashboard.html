@@ -17,6 +17,7 @@
         <h1>Hi {{ g.user['name'].split(' ')[0] }}!</h1>
         <a class="button" href="{{ url_for('entry.create') }}">New entry</a>
       </div>
+      {% if entries %}
       {% for entry in entries %}
         <div class="entry">
           <div class="row">
@@ -42,6 +43,11 @@
           <hr>
         {% endif %}
       {% endfor %}
+      {% else %}
+      <div>
+        There are no entries yet
+        {% endif %}
+      </div>
     </div>
   </div>
   <a class="add-button" href="{{ url_for('entry.create') }}">
