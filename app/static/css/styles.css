@@ -309,6 +309,7 @@ hr {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  width: 300px;
 }
 
 .description {
@@ -491,6 +492,16 @@ hr {
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
+.activity {
+  width: 100%;
+}
+
+.back {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
 @media (max-width: 600px) {
   nav {
     padding: 5px 20px;
@@ -541,7 +552,8 @@ hr {
     width: 100%;
   }
 
-  textarea {
+  textarea,
+  .activity {
     max-width: 271px;
   }
 
@@ -562,5 +574,16 @@ hr {
 
   .new-top-button {
     display: inline;
+  }
+
+  .create > form,
+  .update > form {
+    box-shadow: none;
+    background: none;
+    width: none;
+  }
+
+  .back {
+    width: 271px;
   }
 }

@@ -3,12 +3,34 @@
 {% block title %}Create{% endblock title %}
 
 {% block content %}
-
 <section class="create">
   <form method="post">
-    <div>
+    <div class="back">
       <a href="{{ url_for('entry.entries') }}">Back</a>
     </div>
+    <input
+      class="activity"
+      id="activity"
+      list="activities"
+      placeholder="What did you do today?"
+      required
+    />
+    <datalist id="activities" name="activities">
+      <option>Draw</option>
+      <option>Paint</option>
+      <option>Run</option>
+      <option>Family</option>
+      <option>Videogames</option>
+      <option>Dancing</option>
+      <option>Travel</option>
+      <option>Coffee</option>
+      <option>Work</option>
+      <option>Friends</option>
+      <option>School</option>
+      <option>Shopping</option>
+      <option>Read</option>
+      <option>Park</option>
+    </datalist>
     <textarea
       type="text"
       name="description"
@@ -17,7 +39,7 @@
       id="description"
       placeholder="Description"
       required
-      ></textarea>
+    ></textarea>
     <div class="gallery">
       <img
         src="{{ url_for('static', filename='img/happy.png') }}"
