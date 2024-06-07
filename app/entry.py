@@ -40,10 +40,13 @@ def create():
 
         if error is None:
             db, c = get_db()
+            current_datetime = datetime.now()
+            user_timezone = request.headers.get('Timezone')  # Get the user's timezone from the request headers
+            user_datetime = current_datetime.astimezone(pytz.timezone(user_timezone))  # Convert the datetime to the user's timezone
             c.execute(
                 'INSERT INTO entries (emotion, description, created_by, created_at, modified_at)'
                 ' VALUES (%s, %s, %s, %s, %s)',
-                (emotion, description, g.user['id'], datetime.now(), datetime.now())
+                (emotion, description, g.user['id'], user_datetime, user_datetime)
             )
             db.commit()
             return redirect(url_for('entry.entries'))
