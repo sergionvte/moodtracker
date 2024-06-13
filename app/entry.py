@@ -1,7 +1,6 @@
 from flask import (
     Blueprint, render_template, request, redirect, url_for, g, flash
 )
-import pytz
 from werkzeug.exceptions import abort
 from datetime import datetime
 from .auth import login_required
