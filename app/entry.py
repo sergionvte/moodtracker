@@ -41,13 +41,10 @@ def create():
 
         if error is None:
             db, c = get_db()
-            current_datetime = datetime.now()
-            user_timezone = request.headers.get('Timezone')  # Get the user's timezone from the request headers
-            user_datetime = current_datetime.astimezone(pytz.timezone(user_timezone))  # Convert the datetime to the user's timezone
             c.execute(
                 'INSERT INTO entries (emotion, description, created_by, created_at, modified_at)'
                 ' VALUES (%s, %s, %s, %s, %s)',
-                (emotion, description, g.user['id'], user_datetime, user_datetime)
+                (emotion, description, g.user['id'], datetime.now(), datetime.now())
             )
             db.commit()
             return redirect(url_for('entry.entries'))
@@ -79,16 +76,16 @@ def update(id):
     entry = get_entry(id)
 
     if request.method == 'POST':
-        emotion = request.form['emotion']
-        description = request.form['description']
+        emotion = request.form.get('selected_value')
+        description = request.form.get('description')
 
         error = None
 
         if not emotion:
-            error = 'Emotion is required'
+            error = 'Emotion is required.'
 
         if not description:
-            error = 'Description is required'
+            error = 'Description is required.'
 
         if error is not None:
             flash(error)
@@ -101,7 +98,9 @@ def update(id):
             )
             db.commit()
             return redirect(url_for('entry.entries'))
+
     return render_template('entry/update.html', entry=entry)
+
 
 @bp.route('/<int:id>/delete', methods=['GET', 'POST'])
 @login_required

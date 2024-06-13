@@ -3,9 +3,7 @@
 {% block title %}Update{% endblock title %}
 
 {% block content %}
-
 <section class="update">
-
   <form method="post">
     <div>
       <a href="{{ url_for('entry.entries') }}">Back</a>
@@ -16,48 +14,46 @@
       class="description"
       id="description"
       placeholder="Description"
-      value="{{ request.form['textarea'] or entry['description'] }}"
       required
-      ></textarea>
+    >{{ request.form['description'] or entry['description'] }}</textarea>
     <div class="gallery">
       <img
         src="{{ url_for('static', filename='img/happy.png') }}"
         alt="happy-face"
         data-value="happy"
-        class="happy-face face"
+        class="happy-face face {% if request.form['selected_value'] == 'happy' or entry['emotion'] == 'happy' %}selected{% endif %}"
         onclick="selectImage(this)"
       />
       <img
         src="{{ url_for('static', filename='img/good.png') }}"
         alt="good-face"
         data-value="good"
-        class="good-face face"
+        class="good-face face {% if request.form['selected_value'] == 'good' or entry['emotion'] == 'good' %}selected{% endif %}"
         onclick="selectImage(this)"
       />
       <img
         src="{{ url_for('static', filename='img/meh.png') }}"
         alt="meh-face"
         data-value="meh"
-        class="meh-face face"
+        class="meh-face face {% if request.form['selected_value'] == 'meh' or entry['emotion'] == 'meh' %}selected{% endif %}"
         onclick="selectImage(this)"
       />
       <img
         src="{{ url_for('static', filename='img/angry.png') }}"
         alt="angry-face"
         data-value="angry"
-        class="angry-face face"
+        class="angry-face face {% if request.form['selected_value'] == 'angry' or entry['emotion'] == 'angry' %}selected{% endif %}"
         onclick="selectImage(this)"
       />
       <img
         src="{{ url_for('static', filename='img/sad.png') }}"
         alt="sad-face"
         data-value="sad"
-        class="sad-face face"
+        class="sad-face face {% if request.form['selected_value'] == 'sad' or entry['emotion'] == 'sad' %}selected{% endif %}"
         onclick="selectImage(this)"
       />
     </div>
-    <input type="hidden" name="selected_value" id="selected_value" />
+    <input type="hidden" name="selected_value" id="selected_value" value="{{ request.form['selected_value'] or entry['emotion'] }}" />
     <button type="submit">Save</button>
   </form>
-</section>
 {% endblock content %}

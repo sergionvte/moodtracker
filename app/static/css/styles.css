@@ -228,6 +228,7 @@ hr {
 
 .entry {
   min-width: 290px;
+  max-width: 600px;
 }
 
 .entry > .row {
@@ -276,6 +277,7 @@ hr {
   padding-bottom: 20px;
   padding-right: 20px;
   width: 100%;
+  justify-content: center;
 }
 
 .entry {
@@ -500,6 +502,13 @@ hr {
   width: 100%;
   display: flex;
   justify-content: flex-start;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
 }
 
 @media (max-width: 600px) {
