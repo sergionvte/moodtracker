@@ -228,7 +228,7 @@ hr {
 
 .entry {
   min-width: 290px;
-  max-width: 600px;
+  /*max-width: 600px;*/
 }
 
 .entry > .row {
@@ -326,8 +326,7 @@ hr {
 }
 
 .selected {
-  filter: brightness(1) invert(0.7) sepia(0.5) hue-rotate(50deg)
-    saturate(200%);
+  filter: invert(34%) sepia(7%) saturate(4528%) hue-rotate(161deg) brightness(97%) contrast(80%);
 }
 
 .angry-face {
