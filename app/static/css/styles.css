@@ -322,7 +322,12 @@ hr {
 .face {
   width: 50px;
   height: 50px;
-  /*filter: drop-shadow(3px 3px 3px #3a3a3a88) saturate(0);*/
+  cursor: pointer;
+}
+
+.title {
+  color: white;
+  text-decoration: none;
 }
 
 .selected {
@@ -510,6 +515,22 @@ hr {
   gap: 4px;
 }
 
+.card {
+  padding: 5px 15px;
+  max-width: 500px;
+  border-radius: 30px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+.graphic {
+  width: 100%;
+}
+
 @media (max-width: 600px) {
   nav {
     padding: 5px 20px;
@@ -594,4 +615,10 @@ hr {
   .back {
     width: 271px;
   }
+
+  .card {
+    margin-top: 10px;
+  }
 }
+
+

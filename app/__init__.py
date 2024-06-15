@@ -45,10 +45,12 @@ def create_app():
     from . import auth
     from . import entry
     from . import profile
+    from . import analytics
 
     app.register_blueprint(auth.bp)
     app.register_blueprint(entry.bp)
     app.register_blueprint(profile.bp)
+    app.register_blueprint(analytics.bp)
 
     return app
 

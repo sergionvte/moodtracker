@@ -1,0 +1,18 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}Analytics{% endblock %}
+
+{% block dashboard %}
+<div class="card">
+  <h1>Summary</h1>
+  <img class="graphic" src="data:image/png;base64,{{ data }}" alt="generated_plot">
+</div>
+<div class="card">
+  <h1>Summary</h1>
+  {% with data = dict(entries['emotion'].value_counts()) %}
+    {% for x in data %}
+      <p>{{ x.capitalize() }}: {{ data[x] }}</p>
+    {% endfor %}
+  {% endwith %}
+</div>
+{% endblock dashboard %}
