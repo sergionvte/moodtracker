@@ -4,7 +4,7 @@
 
 {% block dashboard %}
 <div class="dashboard-welcome">
-  <h1>Hi {{ g.user['name'].split(' ')[0] }}!</h1>
+  <h1 class="greeting">Hi {{ g.user['name'].split(' ')[0] }}!</h1>
   <a class="button new-top-button" href="{{ url_for('entry.create') }}">New entry</a>
 </div>
   {% if entries %}
