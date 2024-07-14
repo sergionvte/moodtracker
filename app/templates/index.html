@@ -5,10 +5,12 @@
 {% block content %}
 <section class="welcome">
   <div class="welcome-content">
-    <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="logo">
+    <div class="col-one">
+      <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="logo">
+    </div>
+    
     <h1>Welcome to MoodTracker</h1>
       <p>Track your emotions, activities, and discover what influences your mood.</p>
-
       <h2>What is MoodTracker?</h2>
       <p>MoodTracker is an application designed to record and analyze your emotional state at different times of the day. Our platform allows you to:</p>
       <ul>

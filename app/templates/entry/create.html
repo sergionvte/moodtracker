@@ -8,73 +8,78 @@
     <div class="back">
       <a href="{{ url_for('entry.entries') }}">Back</a>
     </div>
-    <input
-      class="activity"
-      id="activity"
-      list="activities"
-      placeholder="What did you do today?"
-      required
-    />
-    <datalist id="activities" name="activities">
-      <option>Draw</option>
-      <option>Paint</option>
-      <option>Run</option>
-      <option>Family</option>
-      <option>Videogames</option>
-      <option>Dancing</option>
-      <option>Travel</option>
-      <option>Coffee</option>
-      <option>Work</option>
-      <option>Friends</option>
-      <option>School</option>
-      <option>Shopping</option>
-      <option>Read</option>
-      <option>Park</option>
-    </datalist>
-    <textarea
-      type="text"
-      name="description"
-      class="description"
-      id="description"
-      id="description"
-      placeholder="Description"
-      required
-    ></textarea>
+    <div id="selected-activities"></div>
+    <div class="activity-area">
+      <input
+        class="activity"
+        id="activity"
+        list="activities"
+        placeholder="What did you do today?"
+      />
+      <datalist id="activities" name="activities">
+        <option>Draw</option>
+        <option>Paint</option>
+        <option>Run</option>
+        <option>Family</option>
+        <option>Videogames</option>
+        <option>Dancing</option>
+        <option>Travel</option>
+        <option>Coffee</option>
+        <option>Work</option>
+        <option>Friends</option>
+        <option>School</option>
+        <option>Shopping</option>
+        <option>Read</option>
+        <option>Park</option>
+      </datalist>
+      <button onclick="addActivity()" type="button" class="add-activity">+</button>
+    </div>
+    <div class="description-area">
+      <textarea
+        type="text"
+        name="description"
+        class="description"
+        id="description"
+        id="description"
+        placeholder="Description"
+        required
+      ></textarea>
+    </div>
     <div class="gallery">
       <img
         src="{{ url_for('static', filename='img/happy.png') }}"
         alt="happy-face"
         data-value="happy"
         class="happy-face face"
-        onclick="selectImage(this)"
+        onclick="selectEmotion(this)"
       />
       <img
         src="{{ url_for('static', filename='img/good.png') }}"
         alt="good-face"
         data-value="good"
         class="good-face face"
-        onclick="selectImage(this)"
+        onclick="selectEmotion(this)"
       />
       <img
         src="{{ url_for('static', filename='img/meh.png') }}"
         alt="meh-face"
         data-value="meh"
         class="meh-face face"
-        onclick="selectImage(this)"
+        onclick="selectEmotion(this)"
       />
       <img
         src="{{ url_for('static', filename='img/angry.png') }}"
         alt="angry-face"
         data-value="angry"
         class="angry-face face"
-        onclick="selectImage(this)"
+        onclick="selectEmotion(this)"
       />
       <img
         src="{{ url_for('static', filename='img/sad.png') }}"
         alt="sad-face"
         data-value="sad"
         class="sad-face face"
-        onclick="selectImage(this)"
+        onclick="selectEmotion(this)"
       />
     </div>
     <input type="hidden" name="selected_value" id="selected_value" />
