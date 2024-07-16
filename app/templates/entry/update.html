@@ -35,7 +35,6 @@
       <button onclick="addActivity()" type="button" class="add-activity" id='add-activity'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/></svg></button>
     </div>
-
     <div class="description-area">
       <textarea
       type="text"
@@ -53,35 +52,35 @@
         alt="happy-face"
         data-value="happy"
         class="happy-face face {% if request.form['selected_value'] == 'happy' or entry['emotion'] == 'happy' %}selected{% endif %}"
-        onclick="selectImage(this)"
+        onclick="selectEmotion(this)"
       />
       <img
         src="{{ url_for('static', filename='img/good.png') }}"
         alt="good-face"
         data-value="good"
         class="good-face face {% if request.form['selected_value'] == 'good' or entry['emotion'] == 'good' %}selected{% endif %}"
-        onclick="selectImage(this)"
+        onclick="selectEmotion(this)"
       />
       <img
         src="{{ url_for('static', filename='img/meh.png') }}"
         alt="meh-face"
         data-value="meh"
         class="meh-face face {% if request.form['selected_value'] == 'meh' or entry['emotion'] == 'meh' %}selected{% endif %}"
-        onclick="selectImage(this)"
+        onclick="selectEmotion(this)"
       />
       <img
         src="{{ url_for('static', filename='img/angry.png') }}"
         alt="angry-face"
         data-value="angry"
         class="angry-face face {% if request.form['selected_value'] == 'angry' or entry['emotion'] == 'angry' %}selected{% endif %}"
-        onclick="selectImage(this)"
+        onclick="selectEmotion(this)"
       />
       <img
         src="{{ url_for('static', filename='img/sad.png') }}"
         alt="sad-face"
         data-value="sad"
         class="sad-face face {% if request.form['selected_value'] == 'sad' or entry['emotion'] == 'sad' %}selected{% endif %}"
-        onclick="selectImage(this)"
+        onclick="selectEmotion(this)"
       />
     </div>
     <input type="hidden" name="selected_value" id="selected_value" value="{{ request.form['selected_value'] or entry['emotion'] }}" />

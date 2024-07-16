@@ -8,6 +8,7 @@
     <div class="back">
       <a href="{{ url_for('entry.entries') }}">Go back</a>
     </div>
+    <input type="hidden" name="selected_activities" id="selected_activities_input" />
     <div id="selected-activities"></div>
     <div class="activity-area">
       <input
@@ -42,7 +43,7 @@
         class="description"
         id="description"
         id="description"
-        placeholder="Description"
+        placeholder="Share something about your day"
         required
       ></textarea>
     </div>

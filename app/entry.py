@@ -5,6 +5,7 @@ from werkzeug.exceptions import abort
 from datetime import datetime
 from .auth import login_required
 from .db import get_db
+import ast
 
 bp = Blueprint('entry', __name__)
 
@@ -13,7 +14,7 @@ bp = Blueprint('entry', __name__)
 def entries():
     db, c = get_db()
     c.execute(
-        'SELECT e.id, e.emotion, e.description, e.created_at, e.modified_at'
+        'SELECT e.id, e.emotion, e.description, e.created_at, e.modified_at, e.activities'
         ' FROM entries e JOIN users u ON e.created_by = u.id'
         ' WHERE e.created_by = %s ORDER BY modified_at DESC',
         (g.user['id'],)
@@ -29,6 +30,20 @@ def create():
     if request.method == 'POST':
         emotion = request.form['selected_value']
         description = request.form['description']
+        selected_activities = request.form.get('selected_activities')
+
+        if selected_activities is not None:
+            selected_activities = ast.literal_eval(
+                selected_activities
+            )
+            selected_activities = [
+                element.replace('✖', '') for element in selected_activities
+            ]
+            activities_string = ';'.join(selected_activities)
+        else:
+            activities_string = ''
+
+
 
         error = None
 
@@ -41,9 +56,9 @@ def create():
         if error is None:
             db, c = get_db()
             c.execute(
-                'INSERT INTO entries (emotion, description, created_by, created_at, modified_at)'
-                ' VALUES (%s, %s, %s, %s, %s)',
-                (emotion, description, g.user['id'], datetime.now(), datetime.now())
+                'INSERT INTO entries (emotion, description, created_by, created_at, modified_at, activities)'
+                ' VALUES (%s, %s, %s, %s, %s, %s)',
+                (emotion, description, g.user['id'], datetime.now(), datetime.now(), activities_string)
             )
             db.commit()
             return redirect(url_for('entry.entries'))

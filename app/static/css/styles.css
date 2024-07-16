@@ -21,6 +21,19 @@
   font-family: "Montserrat", sans-serif;
 }
 
+*:active {
+  background-color: none;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+  -webkit-user-select: none; /* Para deshabilitar la selección de texto en Webkit (iOS) */
+  -moz-user-select: none; /* Para deshabilitar la selección de texto en Firefox */
+  -ms-user-select: none; /* Para deshabilitar la selección de texto en IE10+ */
+  user-select: none; /* Estándar para deshabilitar la selección de texto */
+}
+
 html {
   background-color: var(--background);
   margin: 0;
@@ -239,6 +252,19 @@ hr {
   align-items: center;
 }
 
+.emotion-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.emotion-div > img {
+  width: 36px;
+  filter: invert(20%) sepia(10%) saturate(1671%) hue-rotate(157deg) brightness(96%) contrast(85%);
+}
+
 .left {
   width: auto;
   background-color: #fefefe;
@@ -323,6 +349,10 @@ hr {
 .description {
   width: 100%;
   field-sizing: content; /* esto funciona unicamente en chrome */
+}
+
+.gallery img {
+  transition: 0.2s;
 }
 
 .face {
@@ -544,6 +574,17 @@ hr {
   width: 100%;
 }
 
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.info > .activity-area {
+  flex-wrap: wrap;
+}
+
 .add-activity {
   width: 48px;
   height: 41.5px;
@@ -576,8 +617,24 @@ hr {
   background-color: #d1d1d1;
 }
 
+.selected-activity-dashboard,
+.selected-activity-dashboard:hover {
+  background-color: var(--dark);
+  color: var(--text-light);
+}
+
 .selected-activity > span {
   cursor: pointer;
+}
+
+.datetime {
+  margin-top: 15px;
+}
+
+.date,
+.time {
+  font-size: 10pt;
+  margin: 2px 0;
 }
 
 @media (max-width: 600px) {

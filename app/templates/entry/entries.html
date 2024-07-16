@@ -11,7 +11,10 @@
     {% for entry in entries %}
       <div class="entry">
         <div class="row">
-          <h2>{{ entry['emotion'].capitalize() }}</h2>
+          <div class="emotion-div">
+            <img src="{{ url_for('static', filename='img/' + entry['emotion']) }}.png" alt="{{ entry['emotion'] }}">
+            <h2>{{ entry['emotion'].capitalize() }}</h2>
+          </div>
           <div class="actions">
             <a class="button trash" href="{{ url_for('entry.delete', id = entry['id']) }}" onclick="return confirmDelete();">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -27,7 +30,19 @@
           </div>
         </div>
         <p>{{ entry['description'] }}</p>
-        <p>{{ entry['modified_at'].strftime('%d-%b-%Y, %I:%M %p') }}</p>
+        <div class="info">
+          <div class="activity-area">
+          {% if entry['activities'] %}
+            {% for activity in entry['activities'].split(';') %}
+              <div class="selected-activity selected-activity-dashboard">{{ activity }}</div>
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="datetime">
+          <p class="date">{{ entry['modified_at'].strftime('%d-%b-%Y') }}</p>
+          <p class="time">{{ entry['modified_at'].strftime('%I:%M %p') }}</p>
+        </div>
+        </div>
       </div>
       {% if not loop.last %}
         <hr size=1>

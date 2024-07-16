@@ -16,10 +16,23 @@ function addActivity() {
 
   removeSpan.onclick = function() {
     selectedActivities.removeChild(activityDiv);
+    updateSelectedActivitiesInput(); // Llama a la función para actualizar el campo oculto
   };
+
   activityDiv.appendChild(removeSpan);
   selectedActivities.appendChild(activityDiv);
+  updateSelectedActivitiesInput(); // Llama a la función para actualizar el campo oculto
+
   input.value = '';
+}
+
+// Función para actualizar el campo oculto con las actividades seleccionadas
+function updateSelectedActivitiesInput() {
+  const selectedActivitiesDivs = document.querySelectorAll('.selected-activity');
+  const selectedActivities = Array.from(selectedActivitiesDivs).map(div => div.textContent);
+
+  const selectedActivitiesInput = document.getElementById('selected_activities_input');
+  selectedActivitiesInput.value = JSON.stringify(selectedActivities);
 }
 
 // when enter key is pressed the activity is submited
