@@ -27,10 +27,10 @@
           </div>
         </div>
         <p>{{ entry['description'] }}</p>
-        <p>{{ entry['modified_at'].strftime('%Y-%m, %d %I:%M %p') }}</p>
+        <p>{{ entry['modified_at'].strftime('%d-%b-%Y, %I:%M %p') }}</p>
       </div>
       {% if not loop.last %}
-        <hr>
+        <hr size=1>
       {% endif %}
     {% endfor %}
   {% else %}

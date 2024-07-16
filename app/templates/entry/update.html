@@ -5,10 +5,39 @@
 {% block content %}
 <section class="update">
   <form method="post">
-    <div>
-      <a href="{{ url_for('entry.entries') }}">Back</a>
+    <div class="back">
+      <a href="{{ url_for('entry.entries') }}">Go back</a>
     </div>
-    <textarea
+    <div id="selected-activities"></div>
+    <div class="activity-area">
+      <input
+        class="activity"
+        id="activity"
+        list="activities"
+        placeholder="What did you do today?"
+      />
+      <datalist id="activities" name="activities">
+        <option>Draw</option>
+        <option>Paint</option>
+        <option>Training</option>
+        <option>Family</option>
+        <option>Videogames</option>
+        <option>Dance</option>
+        <option>Travel</option>
+        <option>Coffee</option>
+        <option>Work</option>
+        <option>Friends</option>
+        <option>School</option>
+        <option>Shopping</option>
+        <option>Read</option>
+        <option>Park</option>
+      </datalist>
+      <button onclick="addActivity()" type="button" class="add-activity" id='add-activity'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/></svg></button>
+    </div>
+
+    <div class="description-area">
+      <textarea
       type="text"
       name="description"
       class="description"
@@ -16,6 +45,8 @@
       placeholder="Description"
       required
     >{{ request.form['description'] or entry['description'] }}</textarea>
+    </div>
+
     <div class="gallery">
       <img
         src="{{ url_for('static', filename='img/happy.png') }}"

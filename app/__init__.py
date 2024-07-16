@@ -1,11 +1,15 @@
 from flask import (
     Flask, send_file, g, request, redirect, render_template, url_for
 )
+from werkzeug.utils import secure_filename
 import os
 
 
 def create_app():
+    UPLOAD_FOLDER = '/uploads'
+
     app = Flask(__name__)
+
 
     app.config.from_mapping(
         SECRET_KEY=os.environ.get('SECRET_KEY'),
@@ -14,6 +18,8 @@ def create_app():
         DATABASE_PASSWORD=os.environ.get('FLASK_DATABASE_PASSWORD'),
         DATABASE=os.environ.get('FLASK_DATABASE'),
     )
+
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
     from . import db
 

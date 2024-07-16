@@ -19,6 +19,7 @@ instructions = [
       created_by INT NOT NULL,
       created_at DATETIME NOT NULL,
       modified_at DATETIME NOT NULL,
+      activities TEXT,
       FOREIGN KEY (created_by) REFERENCES users(id)
     );
     '''

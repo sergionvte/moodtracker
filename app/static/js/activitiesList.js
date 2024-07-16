@@ -1,5 +1,4 @@
 function addActivity() {
-  console.log('Hi from activitiesList.js!')
   const input = document.getElementById('activity');
   const activity = input.value.trim();
 
@@ -13,7 +12,7 @@ function addActivity() {
 
   const removeSpan = document.createElement('span');
   removeSpan.className = 'remove-activity';
-  removeSpan.textContent = 'x';
+  removeSpan.textContent = '✖';
 
   removeSpan.onclick = function() {
     selectedActivities.removeChild(activityDiv);
@@ -22,3 +21,12 @@ function addActivity() {
   selectedActivities.appendChild(activityDiv);
   input.value = '';
 }
+
+// when enter key is pressed the activity is submited
+var input = document.getElementById('activity');
+input.addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    document.getElementById('add-activity').click();
+  }
+});

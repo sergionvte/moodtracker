@@ -116,6 +116,7 @@ ul {
 
 hr {
   width: 100%;
+  size: 1;
 }
 
 .error {
@@ -544,8 +545,11 @@ hr {
 }
 
 .add-activity {
-  width: 41.5px;
+  width: 48px;
   height: 41.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #selected-activities {
@@ -559,9 +563,21 @@ hr {
 
 .selected-activity {
   border-radius: 50px;
-  padding: 3px 6px;
+  padding: 4px 8px;
   background-color: #e1e1e1;
   font-size: 10pt;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.selected-activity:hover {
+  background-color: #d1d1d1;
+}
+
+.selected-activity > span {
+  cursor: pointer;
 }
 
 @media (max-width: 600px) {
