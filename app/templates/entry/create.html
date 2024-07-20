@@ -9,6 +9,7 @@
       <a href="{{ url_for('entry.entries') }}">Go back</a>
     </div>
     <input type="hidden" name="selected_activities" id="selected_activities_input" />
+    <input type="hidden" id="timezone" name="timezone">
     <div id="selected-activities"></div>
     <div class="activity-area">
       <input
@@ -89,4 +90,7 @@
     <button type="submit">Create</button>
   </form>
 </section>
+<script>
+  document.getElementById('timezone').value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+</script>
 {% endblock content %}

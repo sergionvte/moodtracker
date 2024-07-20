@@ -202,7 +202,7 @@ hr {
   display: flex;
   flex-direction: row;
   gap: 30px;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
 }
 
@@ -270,7 +270,7 @@ hr {
   background-color: #fefefe;
   padding: 20px 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  display: none;
+  display: none; /* TODO: change this */
 }
 
 .panel {
@@ -303,7 +303,7 @@ hr {
   align-self: flex-start;
   gap: 20px;
   padding: 0 20px 20px 20px;
-  width: 100%;
+  width: 1200px;
   justify-content: center;
 }
 
@@ -690,6 +690,7 @@ hr {
     padding-left: 0;
     padding-right: 0;
     width: 100%;
+    max-width: 100%;
   }
 
   textarea,
