@@ -35,6 +35,12 @@ function updateSelectedActivitiesInput() {
   selectedActivitiesInput.value = JSON.stringify(selectedActivities);
 }
 
+function removeActivity(spanElement) {
+  const activityDiv = spanElement.parentNode;
+  activityDiv.parentNode.removeChild(activityDiv);
+  updateSelectedActivitiesInput(); // Llama a la función para actualizar el campo oculto
+}
+
 // when enter key is pressed the activity is submited
 var input = document.getElementById('activity');
 input.addEventListener('keypress', function(event) {

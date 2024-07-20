@@ -16,7 +16,7 @@ def entries():
     c.execute(
         'SELECT e.id, e.emotion, e.description, e.created_at, e.modified_at, e.activities'
         ' FROM entries e JOIN users u ON e.created_by = u.id'
-        ' WHERE e.created_by = %s ORDER BY modified_at DESC',
+        ' WHERE e.created_by = %s ORDER BY created_at DESC',
         (g.user['id'],)
     )
     entries = c.fetchall()
@@ -32,7 +32,7 @@ def create():
         description = request.form['description']
         selected_activities = request.form.get('selected_activities')
 
-        if selected_activities is not None:
+        if selected_activities:
             selected_activities = ast.literal_eval(
                 selected_activities
             )
@@ -42,8 +42,6 @@ def create():
             activities_string = ';'.join(selected_activities)
         else:
             activities_string = ''
-
-
 
         error = None
 
@@ -72,7 +70,7 @@ def get_entry(id):
     db, c = get_db()
 
     c.execute(
-    'SELECT e.id, e.emotion, e.description, e.created_by, e.created_at, e.modified_at'
+    'SELECT e.id, e.emotion, e.description, e.created_by, e.created_at, e.modified_at, e.activities'
     ' FROM entries e JOIN users u ON e.created_by = u.id WHERE e.id = %s',
     (id,)
 )
@@ -92,6 +90,18 @@ def update(id):
     if request.method == 'POST':
         emotion = request.form.get('selected_value')
         description = request.form.get('description')
+        selected_activities = request.form.get('selected_activities')
+
+        if selected_activities:
+            selected_activities = ast.literal_eval(
+                selected_activities
+            )
+            selected_activities = [
+                element.replace('✖', '') for element in selected_activities
+            ]
+            activities_string = ';'.join(selected_activities)
+        else:
+            activities_string = ''
 
         error = None
 
@@ -106,9 +116,9 @@ def update(id):
         else:
             db, c = get_db()
             c.execute(
-                'UPDATE entries SET emotion = %s, description = %s, modified_at = %s'
+                'UPDATE entries SET emotion = %s, description = %s, modified_at = %s, activities = %s'
                 ' WHERE id = %s AND created_by = %s',
-                (emotion, description, datetime.now(), id, g.user['id'])
+                (emotion, description, datetime.now(), activities_string, id, g.user['id'])
             )
             db.commit()
             return redirect(url_for('entry.entries'))

@@ -8,13 +8,21 @@
     <div class="back">
       <a href="{{ url_for('entry.entries') }}">Go back</a>
     </div>
-    <div id="selected-activities"></div>
+    <input type="hidden" name="selected_activities" id="selected_activities_input" value="{{ entry['activities'].split(';') }}" />
+    <div id="selected-activities">
+      {% if entry['activities'] != '' %}
+        {% for activity in entry['activities'].split(';') %}
+          <div class="selected-activity">{{ activity }}<span class="remove-activity" onclick="removeActivity(this)">✖</span></div>
+        {% endfor %}
+      {% endif %}
+    </div>
     <div class="activity-area">
       <input
         class="activity"
         id="activity"
         list="activities"
         placeholder="What did you do today?"
+        maxlength="15"
       />
       <datalist id="activities" name="activities">
         <option>Draw</option>
